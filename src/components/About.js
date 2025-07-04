@@ -151,6 +151,7 @@ const Resume = () => {
         <p>
           <FaGithub /> <a href="https://github.com/kriti">github.com/kriti</a>
         </p>
+        <p>hi commit</p>
       </div>
     </div>
   );
