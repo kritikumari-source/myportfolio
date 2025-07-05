@@ -206,8 +206,8 @@
 //   const [error, setError] = useState(null);
 //   const [news, setNews] = useState([]);
 
-//   const API_KEY = '4f319f09ee51bfa20e174f1a4445df8f';
-//   const NEWS_API_KEY = '4f90fb9ee6ae451480677bd3b9363b18'; // Replace with your NewsAPI key
+//   const API_KEY = process.env.REACT_APP_API_KEY
+//   const NEWS_API_KEY = process.env.REACT_APP_NEWS_API_KEY
 
 //   const fetchAQI = async (lat, lon) => {
 //     try {
