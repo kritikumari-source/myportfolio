@@ -339,3 +339,36 @@ small {
 .contact-section a {
   text-decoration: none;
 } */
+
+
+/* Resume.css */
+
+About.body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, #f0f9ff, #e0f7fa);
+}
+
+.resume-container {
+  min-height: 100vh;
+}
+
+.card-custom {
+  border-radius: 12px;
+  border: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-custom:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
+}
+
+.bg-seagreen {
+  background-color: #2e8b57 !important;
+  color: white !important;
+}
+
+/* section.right {
+  margin-left: 60%;
+} */

@@ -29,7 +29,7 @@ function App() {
       <div className="container my-3">
         <Routes>
           <Route path="/" element={<Textform mode={mode} toggleMode={toggleMode} />} />
-          <Route path="/about" element={<About />} />
+          <Route path="/about" element={<About mode={mode} toggleMode={toggleMode}/>} />
           <Route path="/ToDoList" element={<ToDoList />} />
           <Route path="/weatherapp" element={<WeatherApp />} />
         </Routes>
