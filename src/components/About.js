@@ -17,16 +17,7 @@ import PropTypes from 'prop-types';
  import  { Component } from 'react';
 
 
-
-
-  //   export default function Resume(props)
-  //  {
-  //    const Resume = (props) => {
-   
-  // useEffect(() => {
-  //   AOS.init({ duration: 1000 });
-  // }, []);
-  export default function Resume(props) {
+ export default function Resume(props) {
 
   useEffect(() => {
     AOS.init({ duration: 200 });
@@ -35,16 +26,16 @@ import PropTypes from 'prop-types';
 
 
   return (
-    //  <div className={`resume-container container py-5-${props.mode}`}>
-     <div className={`resume-container container py-5 ${props.mode === 'dark' ? 'bg-dark text-light' : 'bg-light text-dark'}`} style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}> 
+    
+     <div className= "resume-container container py-5" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}> 
 
       <div
-        className={`row align-items-center justify-content-center mb-4-${props.mode === 'dark' ? 'bg-dark text-light' : 'bg-light text-dark'}`} style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}
-        data-aos="fade-up"
+        className= "row align-items-center justify-content-center mb-4"style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}
+       
       >
         {/* Left: Image */}
-        <div className={`col-lg-1-${props.mode === 'dark' ? 'bg-dark text-light' : 'bg-light text-dark'}`}></div>
-        <div className={`col-lg-3 mb-4 mb-lg-0 float-right-${props.mode === 'dark' ? 'bg-dark text-light' : 'bg-light text-dark'}`}>
+        <div className= "col-lg-1" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}></div>
+        <div className= "col-lg-3 mb-4 mb-lg-0 float-right" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
           <img
             src="/kriti.jpg"
             alt="kriti"
@@ -58,9 +49,9 @@ import PropTypes from 'prop-types';
         </div>
 
         {/* Right: Contact Info */}
-        <div className="col-lg-2"></div>
-        <div className="col-lg-4">
-          <div className="card card-custom p-4">
+        <div className= "col-lg-2"  style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}></div>
+        <div className="col-lg-4"style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}} >
+          <div className= "card card-custom p-4" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
             <h4 className="mb-3">Contact</h4>
             <p>
               <FaEnvelope className="me-2 text-danger" />
@@ -95,11 +86,11 @@ import PropTypes from 'prop-types';
       </div>
 
       {/* About Me */}
-      <div className="row justify-content-center mb-4 mt-4" data-aos="fade-up">
-        <div className="col-lg-10">
-          <div className="card card-custom">
-            <div className="card-header bg-light">
-              <h5 className="mb-0">
+      <div className="row justify-content-center mb-4 mt-4"  style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+        <div className="col-lg-10" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+          <div className="card card-custom" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+            <div className={`card-header ${props.mode === 'light'?? 'bg-light'}`} style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+              <h5 className="mb-0" style={{backgroundColor: props.mode=== 'dark'??'#13466e', color: props.mode=== 'dark'?'white':'#042743'}}>
                 <button
                   className="btn btn-link text-decoration-none text-dark"
                   type="button"
@@ -108,18 +99,18 @@ import PropTypes from 'prop-types';
                   aria-expanded="true"
                   aria-controls="aboutMeCollapse"
                 >
-                  <b>About Me</b>
+                  <div className="head1" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}} ><b>About Me</b></div>
                 </button>
               </h5>
             </div>
-            <div id="aboutMeCollapse" className="collapse show">
-              <div className="card-body">
-                <strong></strong> Highly motivated and detail-oriented Front-End
+            <div id="aboutMeCollapse" className="collapse show" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+              <div className="card-body" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+                <strong></strong> <p>Highly motivated and detail-oriented Front-End
                 Developer with a strong foundation in HTML, CSS, JavaScript, and
                 React.js. Proven ability to design and develop responsive,
                 user-centric websites and web applications. Experience in
                 collaborative environments, project management, and technical
-                documentation. Strong analytical and problem-solving skills.
+                documentation. Strong analytical and problem-solving skills.</p>
               </div>
             </div>
           </div>
@@ -130,28 +121,28 @@ import PropTypes from 'prop-types';
         {/* weather app */}
         <div
           className="row justify-content-center mb-4 mt-4"
-          data-aos="fade-up"
+           style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}
         >
-          <div className="col-lg-10">
-            <div className="card card-custom">
-              <div className="card-header bg-light">
-                <h5 className="mb-0">
+          <div className="col-lg-10" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+            <div className="card card-custom" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+              <div className="card-header bg-light" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+                <h5 className="mb-0" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
                   <button
-                    className="btn btn-link text-decoration-none text-dark"
+                    className="btn btn-link text-decoration-none text-dark" 
                     type="button"
                     data-bs-toggle="collapse"
                     data-bs-target="#aboutMeCollapse"
                     aria-expanded="true"
-                    aria-controls="aboutMeCollapse"
-                  >
-                    <b>Projects</b>
+                    aria-controls="aboutMeCollapse" >
+                    <div className="head2" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}} ><b>Projects</b></div>
                   </button>
                 </h5>
               </div>{" "}
               {/* ✅ Properly closed card-header here */}
-              <div id="aboutMeCollapse" className="collapse show">
-                <div className="card-body">
-                  <strong>WeatherApp: A Real-Time Weather Forecast App</strong>
+              <div id="aboutMeCollapse" className="collapse show" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+                <div className="card-body" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+                  
+                  <div className="head" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}} ><b>WeatherApp: A Real-Time Weather Forecast App</b></div>
                   <p>
                     WeatherApp is a responsive weather application that provides
                     users with real-time weather data, forecasts, and
@@ -160,7 +151,10 @@ import PropTypes from 'prop-types';
                     conditions such as temperature, humidity, wind speed, and a
                     1-day forecast.
                   </p>
-                  <strong>Key Features:</strong>
+                  
+                  <div className="head" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}} ><b>Key Features:</b></div>
+                  
+                  
                   <ul>
                     <li>Real-time weather updates using OpenWeatherMap API.</li>
 
@@ -176,7 +170,8 @@ import PropTypes from 'prop-types';
                   </ul>
                   <ul>
                     <li>
-                      <strong>Languages & Frameworks:</strong>
+                      <div className="head" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}} ><b>Languages & Frameworks:</b></div>
+                      
                     </li>
                     <li>Frontend: HTML, CSS, JavaScript, React</li>
                     <li>API: OpenWeatherMap API</li>
@@ -185,7 +180,8 @@ import PropTypes from 'prop-types';
                   </ul>
                   <ul>
                     <li>
-                      <strong>Tools & Platforms:</strong>
+                      <div className="head" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}} ><b>Tools & Platforms:</b></div>
+                      
                     </li>
                     Git, GitHub, VS Code, Chrome DevTools.
                   </ul>
@@ -195,10 +191,10 @@ import PropTypes from 'prop-types';
           </div>
         </div>
         {/* ToDoList */}
-        <div className="row justify-content-center mb-4" data-aos="fade-up">
-          <div className="col-lg-10">
-            <div className="card card-custom">
-              <div className="card-header bg-light">
+        <div className="row justify-content-center mb-4" data-aos="fade-up" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+          <div className="col-lg-10" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+            <div className="card card-custom" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+              <div className="card-header bg-light" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
                 <h5 className="mb-0">
                   <button
                     className="btn btn-link text-decoration-none text-dark"
@@ -207,15 +203,21 @@ import PropTypes from 'prop-types';
                     data-bs-target="#aboutMeCollapse"
                     aria-expanded="true"
                     aria-controls="aboutMeCollapse"
+                    
                   >
-                    <b>Projects</b>
+
+                      
+                    
                   </button>
+                  <div className="head" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}} ><b>Projects</b></div>
+
                 </h5>
               </div>
 
-              <div id="aboutMeCollapse" className="collapse show">
-                <div className="card-body">
-                  <strong>To-Do List: App to maintain daily routine</strong>
+              <div id="aboutMeCollapse" className="collapse show" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+                <div className="card-body" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+                  
+                  <div className="head" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}} ><b>To-Do List: App to maintain daily routine</b></div>
                   <p>
                     A simple and efficient to-do list web application that helps
                     users manage daily tasks. Features include task creation,
@@ -223,7 +225,8 @@ import PropTypes from 'prop-types';
                     storage using local storage. Built with React and styled for
                     a clean, responsive user experience.
                   </p>
-                  <strong>Key Features:</strong>
+                   <div className="head3" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}} ><b>Key Features:</b></div>
+                 
                   <ul>
                     <li>
                       Built a responsive, single-page to-do list application
@@ -251,13 +254,15 @@ import PropTypes from 'prop-types';
                   </ul>
                   <ul>
                     <li>
-                      <strong>Languages & Frameworks:</strong>
+                       <div className="head" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}} ><b>Languages and Framework</b></div>
+                      
                     </li>
                     HTML5, CSS3, JavaScript (ES6+), React.js
                   </ul>
                   <ul>
                     <li>
-                      <strong>Tools & Platforms:</strong>
+                       <div className="head" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}} ><b>Tools & Platform:</b></div>
+                      
                     </li>
                     Git, GitHub, VS Code, Chrome DevTools.
                   </ul>
@@ -270,11 +275,11 @@ import PropTypes from 'prop-types';
 
         <div
           className="row justify-content-center mb-4 mt-4"
-          data-aos="fade-up"
+          data-aos="fade-up" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}
         >
-          <div className="col-lg-10">
-            <div className="card card-custom">
-              <div className="card-header bg-light">
+          <div className="col-lg-10" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+            <div className="card card-custom" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+              <div className="card-header bg-light" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
                 <h5 className="mb-0">
                   <button
                     className="btn btn-link text-decoration-none text-dark"
@@ -284,14 +289,18 @@ import PropTypes from 'prop-types';
                     aria-expanded="true"
                     aria-controls="aboutMeCollapse"
                   >
-                    <b>Projects</b>
+                     <div className="head1" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}} ><b>Projects</b></div>
+
+                    
                   </button>
                 </h5>
               </div>{" "}
               {/* ✅ Properly closed card-header here */}
-              <div id="aboutMeCollapse" className="collapse show">
-                <div className="card-body">
-                  <strong>NewsApp: Headlines of news</strong>
+              <div id="aboutMeCollapse" className="collapse show" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+                <div className="card-body" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+                  <div className="head" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}} ><b>NewsApp: Headlines of news</b></div> 
+                  
+                 
                   <p>
                     A dynamic news application that fetches and displays the
                     latest headlines using the NewsAPI. Built with React, it
@@ -302,7 +311,8 @@ import PropTypes from 'prop-types';
                     concepts like API integration, conditional rendering, and
                     component-based architecture.
                   </p>
-                  <strong>Key Features:</strong>
+                  <div className="head" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}} ><b>Key Features:</b></div> 
+                 
                   <ul>
                     <li>
                       Routing: Implemented React Router for seamless navigation
@@ -316,7 +326,8 @@ import PropTypes from 'prop-types';
                   </ul>
                   <ul>
                     <li>
-                      <strong>Languages & Frameworks:</strong>
+                      <div className="head" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}} ><b>Languages and Frameworks:</b></div> 
+                     
                     </li>
                     <li>Frontend: HTML, CSS, JavaScript, React</li>
                     <li>API: News API</li>
@@ -324,7 +335,8 @@ import PropTypes from 'prop-types';
                   </ul>
                   <ul>
                     <li>
-                      <strong>Tools & Platforms:</strong>
+                      <div className="head" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}} ><b>Tools and Platforms:</b></div> 
+
                     </li>
                     Git, GitHub, VS Code, Chrome DevTools.
                   </ul>
@@ -337,11 +349,11 @@ import PropTypes from 'prop-types';
        
         <div
           className="row justify-content-center mb-4 mt-4"
-          data-aos="fade-up"
+          data-aos="fade-up" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}
         >
-          <div className="col-lg-10">
-            <div className="card card-custom">
-              <div className="card-header bg-light">
+          <div className="col-lg-10" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+            <div className="card card-custom" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+              <div className="card-header bg-light" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
                 <h5 className="mb-0">
                   <button
                     className="btn btn-link text-decoration-none text-dark"
@@ -351,17 +363,18 @@ import PropTypes from 'prop-types';
                     aria-expanded="true"
                     aria-controls="aboutMeCollapse"
                   >
-                    <b>Professional Experience</b>
+                    <div className="head" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}} ><b>Professional Experiences:</b></div> 
+                   
                   </button>
                 </h5>
               </div>{" "}
               {/* ✅ Properly closed card-header here */}
-              <div id="aboutMeCollapse" className="collapse show">
-                <div className="card-body">
-                  <strong>
-                    CSIR-National Metallurgical Laboratory (CSIR-NML) —
+              <div id="aboutMeCollapse" className="collapse show" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+                <div className="card-body" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+                  <div className="head" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}} ><b>CSIR-National Metallurgical Laboratory (CSIR-NML) —
                     Jamshedpur, Jharkhand (Nov 2016 – Apr 2017)
-                  </strong>
+                  </b></div> 
+                    >
                   <p>
                     <ul>
                       <li>
@@ -384,6 +397,7 @@ import PropTypes from 'prop-types';
                       </li>
                     </ul>
                   </p>
+                  
                   <strong>Key Achievements:</strong>
                   <ul>
                     <li>
@@ -405,11 +419,11 @@ import PropTypes from 'prop-types';
      {/* Intern */}
         <div
           className="row justify-content-center mb-4 mt-4"
-          data-aos="fade-up"
+          data-aos="fade-up" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}
         >
-          <div className="col-lg-10">
-            <div className="card card-custom">
-              <div className="card-header bg-light">
+          <div className="col-lg-10" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+            <div className="card card-custom" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+              <div className="card-header bg-light" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
                 <h5 className="mb-0">
                   <button
                     className="btn btn-link text-decoration-none text-dark"
@@ -419,16 +433,22 @@ import PropTypes from 'prop-types';
                     aria-expanded="true"
                     aria-controls="aboutMeCollapse"
                   >
-                    <b>Intern</b>
+                    <div className="head" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}} ><b>Intern
+                  </b></div> 
+                    
+                    
                   </button>
                 </h5>
               </div>{" "}
               {/* ✅ Properly closed card-header here */}
-              <div id="aboutMeCollapse" className="collapse show">
-                <div className="card-body">
-                  <strong>
-                    Tata Steel — Jamshedpur, Jharkhand (May 2014 – Jun 2014)
-                  </strong>
+              <div id="aboutMeCollapse" className="collapse show" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+                <div className="card-body" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+                 <div className="head" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}} ><b>  Tata Steel — Jamshedpur, Jharkhand (May 2014 – Jun 2014)
+                    
+                  </b></div> 
+                    
+                   
+ 
                   <p>
                     <ul>
                       <li>
@@ -450,7 +470,10 @@ import PropTypes from 'prop-types';
                       </li>
                     </ul>
                   </p>
-                  <strong>Key Learnings:</strong>
+                  <div className="head" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}} ><b> Key Learnings:
+                    
+                  </b></div>
+                  
                   <ul>
                     <li>
                       {" "}
@@ -471,11 +494,11 @@ import PropTypes from 'prop-types';
         {/* Education */}
         <div
           className="row justify-content-center mb-4 mt-4"
-          data-aos="fade-up"
+          data-aos="fade-up" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}
         >
-          <div className="col-lg-10">
-            <div className="card card-custom">
-              <div className="card-header bg-light">
+          <div className="col-lg-10" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+            <div className="card card-custom" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+              <div className="card-header bg-light" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
                 <h5 className="mb-0">
                   <button
                     className="btn btn-link text-decoration-none text-dark"
@@ -485,16 +508,17 @@ import PropTypes from 'prop-types';
                     aria-expanded="true"
                     aria-controls="aboutMeCollapse"
                   >
-                    <b>Education</b>
+                    <div className="head" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}} ><b>  Education
+                    
+                  </b></div>
+                   
                   </button>
                 </h5>
               </div>{" "}
               {/* ✅ Properly closed card-header here */}
-              <div id="aboutMeCollapse" className="collapse show">
-                <div className="card-body">
-                  <strong>
-                    
-                  </strong>
+              <div id="aboutMeCollapse" className="collapse show" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+                <div className="card-body" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+                  
                   <p>
                     <ul>
                       
@@ -506,7 +530,7 @@ import PropTypes from 'prop-types';
                       </li>
                      
                     </ul>
-                  </p>
+                 </p>
                  
                 </div>
               </div>
@@ -516,11 +540,11 @@ import PropTypes from 'prop-types';
 {/* Academic performance */}
          <div
           className="row justify-content-center mb-4 mt-4"
-          data-aos="fade-up"
+          data-aos="fade-up" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}
         >
-          <div className="col-lg-10">
-            <div className="card card-custom">
-              <div className="card-header bg-light">
+          <div className="col-lg-10" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+            <div className="card card-custom" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+              <div className="card-header bg-light" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
                 <h5 className="mb-0">
                   <button
                     className="btn btn-link text-decoration-none text-dark"
@@ -530,16 +554,18 @@ import PropTypes from 'prop-types';
                     aria-expanded="true"
                     aria-controls="aboutMeCollapse"
                   >
-                    <b>Academic and Personal Achievements</b>
+
+                    <div className="head" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}} ><b>  Academic and personal Achievements:
+                    
+                  </b></div>
+                  
                   </button>
                 </h5>
               </div>{" "}
               {/* ✅ Properly closed card-header here */}
-              <div id="aboutMeCollapse" className="collapse show">
-                <div className="card-body">
-                  <strong>
-                    
-                  </strong>
+              <div id="aboutMeCollapse" className="collapse show" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+                <div className="card-body" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+                  
                   <p>
                     <ul>
                       
@@ -563,11 +589,11 @@ academic performance.</li>
         {/* UPSC */}
         <div
           className="row justify-content-center mb-4 mt-4"
-          data-aos="fade-up"
+          data-aos="fade-up" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}
         >
-          <div className="col-lg-10">
-            <div className="card card-custom">
-              <div className="card-header bg-light">
+          <div className="col-lg-10" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+            <div className="card card-custom" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+              <div className="card-header bg-light" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
                 <h5 className="mb-0">
                   <button
                     className="btn btn-link text-decoration-none text-dark"
@@ -577,19 +603,23 @@ academic performance.</li>
                     aria-expanded="true"
                     aria-controls="aboutMeCollapse"
                   >
-                    <b>Additional Experience & Strengths</b>
+                    <div className="head" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}} ><b>  Additional Experience & Strengths :
+                    
+                  </b></div>
+                  
                   </button>
                 </h5>
               </div>{" "}
               {/* ✅ Properly closed card-header here */}
-              <div id="aboutMeCollapse" className="collapse show">
-                <div className="card-body">
-                  <strong>
-                    
-                  </strong>
+              <div id="aboutMeCollapse" className="collapse show" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+                <div className="card-body" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+                 
                   <p>
                     <ul>
-                     <strong> <p>UPSC Civil Services Examination Preparation (2017-2024):</p></strong>
+                      <div className="head" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}} ><b>  <p>UPSC Civil Services Examination Preparation (2017-2024):</p>
+                    
+                  </b></div>
+                     
                       <li>
                         {" "}
                          Developed in-depth knowledge of Indian polity, governance, and current affairs.
@@ -612,11 +642,11 @@ academic performance.</li>
         {/* Education */}
         <div
           className="row justify-content-center mb-4 mt-4"
-          data-aos="fade-up"
+          data-aos="fade-up" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}
         >
-          <div className="col-lg-10">
-            <div className="card card-custom">
-              <div className="card-header bg-light">
+          <div className="col-lg-10" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+            <div className="card card-custom" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+              <div className="card-header bg-light" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
                 <h5 className="mb-0">
                   <button
                     className="btn btn-link text-decoration-none text-dark"
@@ -626,16 +656,17 @@ academic performance.</li>
                     aria-expanded="true"
                     aria-controls="aboutMeCollapse"
                   >
-                    <b>Strengths & Interests</b>
+                    <div className="head" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}} ><b> Strengths & Interests
+                    
+                  </b></div>
+                    
                   </button>
                 </h5>
               </div>{" "}
               {/* ✅ Properly closed card-header here */}
-              <div id="aboutMeCollapse" className="collapse show">
-                <div className="card-body">
-                  <strong>
-                    
-                  </strong>
+              <div id="aboutMeCollapse" className="collapse show" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+                <div className="card-body" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+                  
                   <p>
                     <ul>
                       
@@ -658,7 +689,7 @@ academic performance.</li>
         </div>
 
         {/* Resume Button */}
-        <div className="text-center mb-5" data-aos="fade-up">
+        <div className="text-center mb-5" data-aos="fade-up" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
           <a
             href="/resume.pdf"
             target="_blank"
@@ -672,5 +703,4 @@ academic performance.</li>
     </div>
   );
 };
-//  };
-//  export default Resume;
+
