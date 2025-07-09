@@ -50,7 +50,7 @@ import PropTypes from 'prop-types';
 
         {/* Right: Contact Info */}
         <div className= "col-lg-2"  style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}></div>
-        <div className="col-lg-4"style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}} >
+        <div className="col-lg-4" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}} >
           <div className= "card card-custom p-4" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
             <h4 className="mb-3">Contact</h4>
             <p>
@@ -67,20 +67,35 @@ import PropTypes from 'prop-types';
                 href="https://www.linkedin.com/in/kriti-kumari-696165a6/"
                 target="_blank"
                 rel="noreferrer"
+                style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}
               >
                 linkedin.com/in/kriti
               </a>
             </p>
             <p>
-              <FaGithub className="me-2 text-dark" />
+              <FaGithub className="me-2 text-dark"  />
               <a
                 href="https://github.com/kritikumari-source"
                 target="_blank"
                 rel="noreferrer"
+                style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}
               >
                 github.com/kriti
               </a>
             </p>
+            {/* resume */}
+           
+           <div className="content me-2"  style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}} >
+      <a
+        href="/resume.pdf"         
+        target="_blank"            
+        rel="noopener noreferrer"  
+        style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743' }}
+      >
+        Download Resume
+      </a>
+    </div>
+    {/*  */}
           </div>
         </div>
       </div>
@@ -125,7 +140,7 @@ import PropTypes from 'prop-types';
         >
           <div className="col-lg-10" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
             <div className="card card-custom" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
-              <div className="card-header bg-light" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+              <div className={`card-header ${props.mode === 'light'?? 'bg-light'}`} style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
                 <h5 className="mb-0" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
                   <button
                     className="btn btn-link text-decoration-none text-dark" 
@@ -194,7 +209,7 @@ import PropTypes from 'prop-types';
         <div className="row justify-content-center mb-4" data-aos="fade-up" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
           <div className="col-lg-10" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
             <div className="card card-custom" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
-              <div className="card-header bg-light" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+              <div className={`card-header ${props.mode === 'light'?? 'bg-light'}`} style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
                 <h5 className="mb-0">
                   <button
                     className="btn btn-link text-decoration-none text-dark"
@@ -209,7 +224,8 @@ import PropTypes from 'prop-types';
                       
                     
                   </button>
-                  <div className="head" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}} ><b>Projects</b></div>
+                  <b>Projects</b>
+                  {/* <div className="head" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}} ><b>Projects</b></div> */}
 
                 </h5>
               </div>
@@ -279,7 +295,7 @@ import PropTypes from 'prop-types';
         >
           <div className="col-lg-10" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
             <div className="card card-custom" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
-              <div className="card-header bg-light" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+              <div className={`card-header ${props.mode === 'light'?? 'bg-light'}`} style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
                 <h5 className="mb-0">
                   <button
                     className="btn btn-link text-decoration-none text-dark"
@@ -289,10 +305,11 @@ import PropTypes from 'prop-types';
                     aria-expanded="true"
                     aria-controls="aboutMeCollapse"
                   >
-                     <div className="head1" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}} ><b>Projects</b></div>
+                     {/* <div className="head1" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}} ><b>Projects</b></div> */}
 
                     
                   </button>
+                  <b>Projects</b>
                 </h5>
               </div>{" "}
               {/* ✅ Properly closed card-header here */}
@@ -353,7 +370,7 @@ import PropTypes from 'prop-types';
         >
           <div className="col-lg-10" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
             <div className="card card-custom" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
-              <div className="card-header bg-light" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+             <div className={`card-header ${props.mode === 'light'?? 'bg-light'}`} style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
                 <h5 className="mb-0">
                   <button
                     className="btn btn-link text-decoration-none text-dark"
@@ -363,10 +380,12 @@ import PropTypes from 'prop-types';
                     aria-expanded="true"
                     aria-controls="aboutMeCollapse"
                   >
-                    <div className="head" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}} ><b>Professional Experiences:</b></div> 
-                   
+                
                   </button>
+                  <b>Professional Experience</b>
+                
                 </h5>
+               
               </div>{" "}
               {/* ✅ Properly closed card-header here */}
               <div id="aboutMeCollapse" className="collapse show" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
@@ -374,7 +393,7 @@ import PropTypes from 'prop-types';
                   <div className="head" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}} ><b>CSIR-National Metallurgical Laboratory (CSIR-NML) —
                     Jamshedpur, Jharkhand (Nov 2016 – Apr 2017)
                   </b></div> 
-                    >
+                    
                   <p>
                     <ul>
                       <li>
@@ -398,7 +417,8 @@ import PropTypes from 'prop-types';
                     </ul>
                   </p>
                   
-                  <strong>Key Achievements:</strong>
+                 <div className="head" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}} ><b>Key Achievements:
+                  </b></div> 
                   <ul>
                     <li>
                       {" "}
@@ -423,7 +443,7 @@ import PropTypes from 'prop-types';
         >
           <div className="col-lg-10" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
             <div className="card card-custom" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
-              <div className="card-header bg-light" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+              <div className={`card-header ${props.mode === 'light'?? 'bg-light'}`} style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
                 <h5 className="mb-0">
                   <button
                     className="btn btn-link text-decoration-none text-dark"
@@ -433,11 +453,8 @@ import PropTypes from 'prop-types';
                     aria-expanded="true"
                     aria-controls="aboutMeCollapse"
                   >
-                    <div className="head" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}} ><b>Intern
-                  </b></div> 
-                    
-                    
-                  </button>
+                    </button>
+                <b>Intern</b> 
                 </h5>
               </div>{" "}
               {/* ✅ Properly closed card-header here */}
@@ -498,7 +515,7 @@ import PropTypes from 'prop-types';
         >
           <div className="col-lg-10" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
             <div className="card card-custom" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
-              <div className="card-header bg-light" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+              <div className={`card-header ${props.mode === 'light'?? 'bg-light'}`} style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
                 <h5 className="mb-0">
                   <button
                     className="btn btn-link text-decoration-none text-dark"
@@ -508,11 +525,8 @@ import PropTypes from 'prop-types';
                     aria-expanded="true"
                     aria-controls="aboutMeCollapse"
                   >
-                    <div className="head" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}} ><b>  Education
-                    
-                  </b></div>
-                   
                   </button>
+                   <b>Education</b>
                 </h5>
               </div>{" "}
               {/* ✅ Properly closed card-header here */}
@@ -544,7 +558,7 @@ import PropTypes from 'prop-types';
         >
           <div className="col-lg-10" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
             <div className="card card-custom" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
-              <div className="card-header bg-light" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+              <div className={`card-header ${props.mode === 'light'?? 'bg-light'}`} style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
                 <h5 className="mb-0">
                   <button
                     className="btn btn-link text-decoration-none text-dark"
@@ -554,12 +568,10 @@ import PropTypes from 'prop-types';
                     aria-expanded="true"
                     aria-controls="aboutMeCollapse"
                   >
-
-                    <div className="head" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}} ><b>  Academic and personal Achievements:
-                    
-                  </b></div>
-                  
                   </button>
+                <b>  Academic and personal Achievements:
+                    
+                  </b>
                 </h5>
               </div>{" "}
               {/* ✅ Properly closed card-header here */}
@@ -593,7 +605,7 @@ academic performance.</li>
         >
           <div className="col-lg-10" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
             <div className="card card-custom" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
-              <div className="card-header bg-light" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+ <div className={`card-header ${props.mode === 'light'?? 'bg-light'}`} style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
                 <h5 className="mb-0">
                   <button
                     className="btn btn-link text-decoration-none text-dark"
@@ -603,11 +615,10 @@ academic performance.</li>
                     aria-expanded="true"
                     aria-controls="aboutMeCollapse"
                   >
-                    <div className="head" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}} ><b>  Additional Experience & Strengths :
                     
-                  </b></div>
                   
                   </button>
+                <b>UPSC</b>
                 </h5>
               </div>{" "}
               {/* ✅ Properly closed card-header here */}
@@ -646,7 +657,7 @@ academic performance.</li>
         >
           <div className="col-lg-10" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
             <div className="card card-custom" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
-              <div className="card-header bg-light" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+              <div className={`card-header ${props.mode === 'light'?? 'bg-light'}`} style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
                 <h5 className="mb-0">
                   <button
                     className="btn btn-link text-decoration-none text-dark"
@@ -689,7 +700,7 @@ academic performance.</li>
         </div>
 
         {/* Resume Button */}
-        <div className="text-center mb-5" data-aos="fade-up" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+         {/* <div className="text-center mb-5" data-aos="fade-up" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
           <a
             href="/resume.pdf"
             target="_blank"
@@ -698,9 +709,9 @@ academic performance.</li>
           >
             <FaDownload className="me-2" /> Download Resume
           </a>
-        </div>
+         </div> */}
       </div>
-    </div>
+    </div> 
   );
 };
 
