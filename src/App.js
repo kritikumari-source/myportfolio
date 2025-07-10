@@ -31,7 +31,7 @@ function App() {
           <Route path="/" element={<Textform mode={mode} toggleMode={toggleMode} />} />
           <Route path="/about" element={<About mode={mode} toggleMode={toggleMode}/>} />
           <Route path="/ToDoList" element={<ToDoList />} />
-          <Route path="/weatherapp" element={<WeatherApp />} />
+          <Route path="/weatherapp" element={<WeatherApp mode={mode} toggleMode={toggleMode}/>} />
         </Routes>
       </div>
     </Router>
