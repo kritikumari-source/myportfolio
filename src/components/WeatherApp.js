@@ -1,7 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import PropTypes from 'prop-types'
 
 
 function App(props) {
@@ -86,7 +85,6 @@ function App(props) {
   return (
     <div style={{
       fontFamily: 'Arial, sans-serif',
-      background: '#f0f2f5',
       minHeight: '100vh',
       padding: '2rem',backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'
     }}>
@@ -100,12 +98,11 @@ function App(props) {
         <div style={{
           flex: '1',
           minWidth: '200px',
-          background: '#fff',
-          padding: '20px',
+         padding: '20px',
           borderRadius: '10px',
           boxShadow: '0 4px 12px rgba(0,0,0,0.1)', backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'
         }}>
-          <h3 style={{ color: '#007BFF', backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743' }}>Weather App</h3>
+          <h3 style={{  backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743' }}>Weather App</h3>
           <form onSubmit={handleSubmit} style={{ marginBottom: '20px' }}>
             <input
               type="text"
@@ -125,8 +122,6 @@ function App(props) {
               disabled={loading}
               style={{
                 padding: '10px 16px',
-                backgroundColor: '#007BFF',
-                color: '#fff',
                 border: 'none',
                 borderRadius: '6px',
                 cursor: 'pointer', backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'
@@ -200,7 +195,6 @@ function App(props) {
         <div style={{
           flex: '1',
           minWidth: '300px',
-          background: '#fff',
           padding: '20px',
           borderRadius: '10px',
           boxShadow: '0 4px 12px rgba(0,0,0,0.1)', backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'
