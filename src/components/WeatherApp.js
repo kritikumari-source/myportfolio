@@ -41,6 +41,8 @@ function App(props) {
     try {
       const res = await axios.get(
         `https://newsapi.org/v2/everything?q=weather&language=en&pageSize=5&sortBy=publishedAt&apiKey=${NEWS_API_KEY}`
+      
+      // `https://newsapi.org/v2/top-headlines/sources?category=weatherapiKey=API_KEY`
       );
       setNews(res.data.articles);
     } catch (err) {
@@ -100,9 +102,9 @@ function App(props) {
           minWidth: '200px',
          padding: '20px',
           borderRadius: '10px',
-          boxShadow: '0 4px 12px rgba(0,0,0,0.1)', backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'
+          boxShadow: '0 4px 12px rgba(0,0,0,0.1)',  backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'
         }}>
-          <h3 style={{  backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743' }}>Weather App</h3>
+          <h3 style={{marginLeft:'-10%' ,  backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743' }}>Weather App</h3>
           <form onSubmit={handleSubmit} style={{ marginBottom: '20px' }}>
             <input
               type="text"
@@ -198,9 +200,10 @@ function App(props) {
           padding: '20px',
           borderRadius: '10px',
           boxShadow: '0 4px 12px rgba(0,0,0,0.1)', backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'
-        }}>
+        }} >
 
-          <h3 style= {{ borderBottom: '1px solid #eee', paddingBottom: '8px' , backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>Weather News</h3>
+            <h3 style= {{marginLeft:'-10%' , borderBottom: '1px solid #eee', paddingBottom: '8px' , backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>Weather News</h3>  
+          
           {news.length === 0 ? (
             <p>Loading news...</p>
           ) : (
@@ -211,12 +214,12 @@ function App(props) {
                     href={article.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    style={{ color: '#007BFF', fontWeight: 'bold', textDecoration: 'none' , backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743' }}
+                    style={{ fontWeight: 'bold', textDecoration: 'none' , backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743' }}
                   >
                     {article.title}
                   </a>
                   <br />
-                  <small style={{ color: '#666', backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743' }}>
+                  <small style={{  backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743' }}>
                     {new Date(article.publishedAt).toLocaleDateString()}
                   </small>
                 </li>
