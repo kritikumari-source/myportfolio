@@ -77,8 +77,6 @@ function App() {
     setReminder("");
   };
 
- 
-
   const handleDelete = (id) => {
     setTodos((prev) => prev.filter((item) => item.id !== id));
   };
@@ -88,15 +86,15 @@ function App() {
     (a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]
   );
 
-  useEffect(() => {
-    const popoverTriggerList = document.querySelectorAll(
-      '[data-bs-toggle="popover"]'
-    );
-    const popoverList = [...popoverTriggerList].map(
-      (el) => new bootstrap.Popover(el)
-    );
-    return () => popoverList.forEach((p) => p.dispose());
-  }, []);
+  // useEffect(() => {
+  //   const popoverTriggerList = document.querySelectorAll(
+  //     '[data-bs-toggle="popover"]'
+  //   );
+  //   const popoverList = [...popoverTriggerList].map(
+  //     (el) => new bootstrap.Popover(el)
+  //   );
+  //   return () => popoverList.forEach((p) => p.dispose());
+  // }, []);
 
   // 🔥 Helper to highlight reminders
   const getReminderClass = (reminder) => {
@@ -109,39 +107,65 @@ function App() {
   };
 
   return (
-    
-    <div className="todo-container container mt-4">
+    <div className="todo-container container mt-4" style={{ height: '600px' }}>
+        <h4>TO-DO List</h4>
      
-        <h3> <strong>Schedule your day</strong></h3> 
-      
-          {/* <h1>To‑Do List</h1>    */}
+    <div className="todo" style={{ height: '300px', marginTop: '90px', textAlign: 'center' }}>
+           
+            <div className="card" style={{width: '24rem'}}>
+     <div className="card-body">
+          <div className="input-group mb-2" >  
+            
+ 
+          <input
+            type="text"
+            className="form-control"
+            placeholder="New task…"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && handleAdd()}
+           />
+          <button className="btn btn-success" onClick={handleAdd}>
+            <i className="fa fa-plus" aria-hidden="true"></i>
+          </button>
+             </div> 
+             
 
-         <div className="add-todo mb-3">  
-        
-
-<div className="input-group mb-2">
-  <input
-    type="text"
-    className="form-control"
-    placeholder="New task…"
-    value={text}
-    onChange={(e) => setText(e.target.value)}
-    onKeyDown={(e) => e.key === "Enter" && handleAdd()}
-  />
-  <button className="btn btn-success" onClick={handleAdd}>
-    <i className="fa fa-plus" aria-hidden="true"></i>
-  </button>
-</div>
-
-
-        <h5 className="mb-2 mt-3">
-          <strong>🎯 Prioritize your task</strong>
-        </h5>
-         <div className="btn-group mb-2"
+        {/* <h5 className="mb-2 mt-3"> */}
+          
+        {/* </h5> */}
+        {/* <div
+          className="btn-group mb-2"
           role="group"
           aria-label="Priority selector"
-        >
-          <button
+        > */}
+       
+          <div className="btn-group" style={{width: '22rem', marginTop: '1rem'}}>
+  <button type="button" className="btn  dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" >
+      🎯 Prioritize your task
+  {/* </button> */}
+  <ul className="dropdown-menu dropdown-menu-end">
+    <li><a className= {`btn ${
+              priority === "high" ? "btn-danger" : "btn-outline-danger"
+            }`}
+            onClick= {() => setPriority("high")}
+            href="/"> </a>High</li>
+    <li><a className= {`btn ${
+              priority === "medium" ? "btn-warning" : "btn-outline-warning"
+            }`}
+            onClick= {() => setPriority("medium")}
+          href="/"></a>Medium</li>
+    <li><a type="button"
+            className= {`btn ${
+              priority === "low" ? "btn-success" : "btn-outline-success"
+            }`}
+            onClick= {() => setPriority("low")}
+          href="/"></a>Low</li>
+           
+  </ul>
+   </button>
+</div>
+          {/* <button
             type="button"
             className={`btn ${
               priority === "high" ? "btn-danger" : "btn-outline-danger"
@@ -149,8 +173,8 @@ function App() {
             onClick={() => setPriority("high")}
           >
             High
-          </button>
-          <button
+          </button> */}
+          {/* <button
             type="button"
             className={`btn ${
               priority === "medium" ? "btn-warning" : "btn-outline-warning"
@@ -158,8 +182,8 @@ function App() {
             onClick={() => setPriority("medium")}
           >
             Medium
-          </button>
-          <button
+          </button> */}
+          {/* <button
             type="button"
             className={`btn ${
               priority === "low" ? "btn-success" : "btn-outline-success"
@@ -167,10 +191,11 @@ function App() {
             onClick={() => setPriority("low")}
           >
             Low
-          </button>
-        </div>  
+          </button> */}
+        {/* </div> */}
+        
 
-         <h5 className="mb-2 mt-3">
+        <h5 className="mb-2 mt-3">
           <strong>Add Reminder</strong>
         </h5>
         <input
@@ -180,7 +205,7 @@ function App() {
           onChange={(e) => setReminder(e.target.value)}
         />
 
-        <button
+        {/* <button
           type="button"
           className="btn btn-primary mb-2 me-2"
           data-bs-toggle="popover"
@@ -188,11 +213,10 @@ function App() {
           data-bs-content="Hi here is your set of task"
         >
           See Tasks
-        </button>
-
-          
-         
-        </div> 
+        </button> */}
+      </div>
+       </div>
+</div>
 
       <ul className="list-group">
         {sortedTodos.map((item) => (
@@ -204,7 +228,6 @@ function App() {
           >
             <div>
               <div>
-                
                 <strong>{item.text}</strong>
               </div>
               <div>
@@ -217,13 +240,12 @@ function App() {
               </div>
               {item.reminder && (
                 <div>
-                  
                   <small>
                     Reminder: {format(new Date(item.reminder), "PPpp")}
                   </small>
                 </div>
               )}
-             </div> 
+            </div>
             <div>
               <button
                 className="btn btn-outline-danger btn-sm"
@@ -232,7 +254,7 @@ function App() {
               >
                 <i className="fas fa-trash"></i>
               </button>
-              </div> 
+            </div>
           </li>
         ))}
       </ul>

@@ -88,95 +88,9 @@ select:focus {
   border-color: #38b000;
 }
 
-/* === Task List === */
-.list-group-item {
-  border: none;
-  margin-bottom: 12px;
-  border-radius: 12px;
-  padding: 20px;
-  background: #ffffff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
 
-.list-group-item:hover {
-  transform: scale(1.02);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-}
-
-.list-group-item .btn-sm {
-  margin-left: 10px;
-}
-
-/* === Reminder Visual States === */
-.border-warning {
-  border-left: 6px solid #ffc107;
-  background-color: #fffbea !important;
-}
-
-.border-danger {
-  border-left: 6px solid #dc3545;
-  background-color: #ffe6e6 !important;
-}
-
-/* === Priority Badge === */
-.priority-badge {
-  padding: 3px 10px;
-  border-radius: 50px;
-  font-size: 0.8rem;
-  color: white;
-  margin-left: 5px;
-}
-
-.priority-high {
-  background-color: #d00000;
-}
-
-.priority-medium {
-  background-color: #ffba08;
-}
-
-.priority-low {
-  background-color: #00b04f;
-}
-
-.task-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  font-size: 0.875rem;
-  color: #6c757d;
-}
-
-/* === Typography Enhancements === */
-strong {
-  font-weight: 600;
-  color: #212529;
-}
-
-small {
-  font-size: 0.85rem;
-}
-
-/* Optional popover improvement */
-.popover {
-  font-size: 0.95rem;
-}
  /* weatherApp */
  
-
-/* body.weather-app {
-  margin-left: 50%;
-  margin-top: 20%;
-  padding: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #4219d6, #ACB6E5);
-  min-height: 100vh;
-  display: flex; 
-  justify-content: center;
-  align-items: center;
-} */
-
 .weather-app {
   background: rgba(255, 255, 255, 0.15);
   border-radius: 16px;
