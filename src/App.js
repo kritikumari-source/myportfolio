@@ -30,7 +30,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Textform mode={mode} toggleMode={toggleMode} />} />
           <Route path="/about" element={<About mode={mode} toggleMode={toggleMode}/>} />
-          <Route path="/ToDoList" element={<ToDoList />} />
+          <Route path="/ToDoList" element={<ToDoList mode={mode} toggleMode={toggleMode} />} />
           <Route path="/weatherapp" element={<WeatherApp mode={mode} toggleMode={toggleMode}/>} />
         </Routes>
       </div>
