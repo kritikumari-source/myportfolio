@@ -1,15 +1,68 @@
 import React, { useState, useEffect } from "react";
 import { format, differenceInMinutes, isPast, isFuture } from "date-fns";
+import { gapi } from "gapi-script";
 import "bootstrap/dist/css/bootstrap.min.css";
 import * as bootstrap from "bootstrap/dist/js/bootstrap.bundle";
 window.bootstrap = bootstrap;
 
-function App() {
+const SCOPES = "https://www.googleapis.com/auth/calendar.events";
+
+function App(props) {
   const [todos, setTodos] = useState([]);
   const [text, setText] = useState("");
   const [priority, setPriority] = useState("low");
   const [reminder, setReminder] = useState("");
   const audio = new Audio("/reminder.mp3"); // Add your audio file in public folder
+
+
+
+     // Google Calendar Init
+  useEffect(() => {
+    function start() {
+      gapi.client
+        .init({
+          apiKey: process.env.REACT_APP_GOOGLE_API_KEY,
+          clientId: process.env.REACT_APP_GOOGLE_CLIENT_ID,
+          discoveryDocs: [
+            "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest",
+          ],
+          scope: SCOPES,
+        })
+        .then(() => {
+          gapi.auth2.getAuthInstance().signIn();
+        });
+    }
+    gapi.load("client:auth2", start);
+  }, []);
+
+  // Add to Google Calendar
+  const addToGoogleCalendar = (todo) => {
+    const event = {
+      summary: todo.text,
+      description: "Task from To-Do App",
+      start: {
+        dateTime: new Date(todo.reminder || new Date()).toISOString(),
+        timeZone: "Asia/Kolkata",
+      },
+      end: {
+        dateTime: new Date(
+          new Date(todo.reminder || new Date()).getTime() + 30 * 60 * 1000
+        ).toISOString(),
+        timeZone: "Asia/Kolkata",
+      },
+    };
+
+    gapi.client.calendar.events
+      .insert({
+        calendarId: "primary",
+        resource: event,
+      })
+      .then(() => alert("✅ Added to Google Calendar!"))
+      .catch((err) => {
+        console.error(err);
+        alert("❌ Failed to add to Google Calendar.");
+      });
+  };
 
   // Request notification permission on mount
   useEffect(() => {
@@ -26,6 +79,15 @@ function App() {
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
+
+  //dropdown
+  useEffect(() => {
+  const dropdowns = document.querySelectorAll('[data-bs-toggle="dropdown"]');
+  dropdowns.forEach((dropdown) => {
+    new bootstrap.Dropdown(dropdown);
+  });
+}, []);
+
 
   // Reminder checker
   useEffect(() => {
@@ -97,6 +159,7 @@ function App() {
   // }, []);
 
   // 🔥 Helper to highlight reminders
+
   const getReminderClass = (reminder) => {
     if (!reminder) return "";
     const time = new Date(reminder);
@@ -107,14 +170,14 @@ function App() {
   };
 
   return (
-    <div className="todo-container container mt-4" style={{ height: '600px' }}>
-        <h4>TO-DO List</h4>
+    <div className="todo-container container mt-4" style= {{height: '600px', backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+       <h4>TO-DO List</h4>
      
     <div className="todo" style={{ height: '300px', marginTop: '90px', textAlign: 'center' }}>
            
-            <div className="card" style={{width: '24rem'}}>
-     <div className="card-body">
-          <div className="input-group mb-2" >  
+            <div className="card" style={{width: '24rem', backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+     <div className="card-body" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+          <div className="input-group mb-2" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>  
             
  
           <input
@@ -131,20 +194,16 @@ function App() {
              </div> 
              
 
-        {/* <h5 className="mb-2 mt-3"> */}
-          
-        {/* </h5> */}
-        {/* <div
-          className="btn-group mb-2"
-          role="group"
-          aria-label="Priority selector"
-        > */}
+
        
-          <div className="btn-group" style={{width: '22rem', marginTop: '1rem'}}>
-  <button type="button" className="btn  dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" >
-      🎯 Prioritize your task
-  {/* </button> */}
-  <ul className="dropdown-menu dropdown-menu-end">
+           <div className="btn-group" style={{width:'22rem', marginTop: '1rem', backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+            
+  <button type="button" className="btn  dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style= {{width:'22rem', marginTop: '1rem', backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}} >
+
+     
+ 🎯 Prioritize your task
+     <ul className="dropdown-menu dropdown-menu-end" > 
+ 
     <li><a className= {`btn ${
               priority === "high" ? "btn-danger" : "btn-outline-danger"
             }`}
@@ -161,39 +220,13 @@ function App() {
             }`}
             onClick= {() => setPriority("low")}
           href="/"></a>Low</li>
-           
-  </ul>
-   </button>
-</div>
-          {/* <button
-            type="button"
-            className={`btn ${
-              priority === "high" ? "btn-danger" : "btn-outline-danger"
-            }`}
-            onClick={() => setPriority("high")}
-          >
-            High
-          </button> */}
-          {/* <button
-            type="button"
-            className={`btn ${
-              priority === "medium" ? "btn-warning" : "btn-outline-warning"
-            }`}
-            onClick={() => setPriority("medium")}
-          >
-            Medium
-          </button> */}
-          {/* <button
-            type="button"
-            className={`btn ${
-              priority === "low" ? "btn-success" : "btn-outline-success"
-            }`}
-            onClick={() => setPriority("low")}
-          >
-            Low
-          </button> */}
-        {/* </div> */}
-        
+          
+      </ul>
+            </button>   
+  </div> 
+
+  
+         
 
         <h5 className="mb-2 mt-3">
           <strong>Add Reminder</strong>
@@ -214,9 +247,14 @@ function App() {
         >
           See Tasks
         </button> */}
-      </div>
-       </div>
-</div>
+
+
+
+        
+
+       </div> 
+        </div>
+ </div>
 
       <ul className="list-group">
         {sortedTodos.map((item) => (
@@ -226,8 +264,8 @@ function App() {
               item.reminder
             )}`}
           >
-            <div>
-              <div>
+            <div style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+              <div style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
                 <strong>{item.text}</strong>
               </div>
               <div>
@@ -239,14 +277,21 @@ function App() {
                 </small>
               </div>
               {item.reminder && (
-                <div>
+                <div style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
                   <small>
                     Reminder: {format(new Date(item.reminder), "PPpp")}
                   </small>
                 </div>
               )}
             </div>
-            <div>
+            <div style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
+               <button
+                className="btn btn-outline-primary btn-sm me-2"
+                onClick={() => addToGoogleCalendar(item)}
+                title="Add to Google Calendar"
+              >
+                <i className="fas fa-calendar-plus"></i>
+              </button>
               <button
                 className="btn btn-outline-danger btn-sm"
                 onClick={() => handleDelete(item.id)}
@@ -263,3 +308,4 @@ function App() {
 }
 
 export default App;
+
