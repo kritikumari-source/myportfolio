@@ -5,6 +5,7 @@ import Textform from "./components/Textform";
 import ToDoList from "./components/ToDoList";
 import WeatherApp from "./components/WeatherApp";
 import About from "./components/About";
+import Headlines from "./components/Headlines";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
           <Route path="/about" element={<About mode={mode} toggleMode={toggleMode}/>} />
           <Route path="/ToDoList" element={<ToDoList mode={mode} toggleMode={toggleMode} />} />
           <Route path="/weatherapp" element={<WeatherApp mode={mode} toggleMode={toggleMode}/>} />
+          <Route path="/Headlines" element={<Headlines mode={mode} toggleMode={toggleMode} />} />
         </Routes>
       </div>
     </Router>
