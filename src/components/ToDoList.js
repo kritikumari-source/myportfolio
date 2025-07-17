@@ -1,85 +1,29 @@
 import React, { useState, useEffect } from "react";
 import { format, differenceInMinutes, isPast, isFuture } from "date-fns";
-import { gapi } from "gapi-script";
+// import { gapi } from "gapi-script";
 import "bootstrap/dist/css/bootstrap.min.css";
 import * as bootstrap from "bootstrap/dist/js/bootstrap.bundle";
 window.bootstrap = bootstrap;
 
-const SCOPES = "https://www.googleapis.com/auth/calendar.events";
+// const SCOPES = "https://www.googleapis.com/auth/calendar.events";
 
 function App(props) {
-  const [todos, setTodos] = useState([]);
+//   const [todos, setTodos] = useState([]);
+const [todos, setTodos] = useState(() => {
+    // Load from localStorage when the app starts
+    const saved = localStorage.getItem("todos");
+    return saved ? JSON.parse(saved) : [];
+  });
   const [text, setText] = useState("");
   const [priority, setPriority] = useState("low");
   const [reminder, setReminder] = useState("");
   const audio = new Audio("/reminder.mp3"); // Add your audio file in public folder
 
-
-
-     // Google Calendar Init
-  useEffect(() => {
-    function start() {
-      gapi.client
-        .init({
-          apiKey: process.env.REACT_APP_GOOGLE_API_KEY,
-          clientId: process.env.REACT_APP_GOOGLE_CLIENT_ID,
-          discoveryDocs: [
-            "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest",
-          ],
-          scope: SCOPES,
-        })
-        .then(() => {
-          gapi.auth2.getAuthInstance().signIn();
-        });
-    }
-    gapi.load("client:auth2", start);
-  }, []);
-
-  // Add to Google Calendar
-  const addToGoogleCalendar = (todo) => {
-    const event = {
-      summary: todo.text,
-      description: "Task from To-Do App",
-      start: {
-        dateTime: new Date(todo.reminder || new Date()).toISOString(),
-        timeZone: "Asia/Kolkata",
-      },
-      end: {
-        dateTime: new Date(
-          new Date(todo.reminder || new Date()).getTime() + 30 * 60 * 1000
-        ).toISOString(),
-        timeZone: "Asia/Kolkata",
-      },
-    };
-
-    gapi.client.calendar.events
-      .insert({
-        calendarId: "primary",
-        resource: event,
-      })
-      .then(() => alert("✅ Added to Google Calendar!"))
-      .catch((err) => {
-        console.error(err);
-        alert("❌ Failed to add to Google Calendar.");
-      });
-  };
-
-  // Request notification permission on mount
-  useEffect(() => {
-    if (Notification.permission !== "granted") {
-      Notification.requestPermission();
-    }
-  }, []);
-
-  useEffect(() => {
-    const stored = localStorage.getItem("todos");
-    if (stored) setTodos(JSON.parse(stored));
-  }, []);
-
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
+  
   //dropdown
   useEffect(() => {
   const dropdowns = document.querySelectorAll('[data-bs-toggle="dropdown"]');
@@ -281,17 +225,9 @@ function App(props) {
                   <small>
                     Reminder: {format(new Date(item.reminder), "PPpp")}
                   </small>
+                  
                 </div>
               )}
-            </div>
-            <div style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
-               <button
-                className="btn btn-outline-primary btn-sm me-2"
-                onClick={() => addToGoogleCalendar(item)}
-                title="Add to Google Calendar"
-              >
-                <i className="fas fa-calendar-plus"></i>
-              </button>
               <button
                 className="btn btn-outline-danger btn-sm"
                 onClick={() => handleDelete(item.id)}
@@ -300,6 +236,8 @@ function App(props) {
                 <i className="fas fa-trash"></i>
               </button>
             </div>
+          
+             
           </li>
         ))}
       </ul>

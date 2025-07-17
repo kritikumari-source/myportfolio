@@ -14,7 +14,8 @@ import { Link } from "react-router-dom";
         <header>
 <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
   <div className="container-fluid"  >
-     <Link className="navbar-brand" to="/">My Portfolio</Link> 
+      <Link className="navbar-brand" to="/">My Portfolio</Link>  
+    
     <div className="collapse navbar-collapse"   id="navbarSupportedContent">
       <ul className="navbar-nav me-auto mb-2 mb-lg-0">
         <li className="nav-item">
@@ -29,7 +30,7 @@ import { Link } from "react-router-dom";
             Projects
           </Link>
           <ul className="dropdown-menu">
-            <li className="dropdown-item"><Link to="/newsapp">newsapp</Link></li>
+            <li className="dropdown-item"><Link to="/Headlines">newsapp</Link></li>
            
                
                       <li className="dropdown-item"><Link to="/ToDoList">To-Do List</Link> </li> 
