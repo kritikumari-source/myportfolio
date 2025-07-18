@@ -1,25 +1,26 @@
 
-body {
+/* body {
   background: linear-gradient(135deg, #e0f7fa, #ffffff);
   font-family: 'Inter', sans-serif;
   padding-bottom: 60px;
+  text-align: center;
 }
 
-h1 {
+ h1 {
   font-size: 2.5rem;
   color: #0077b6;
   margin-bottom: 25px;
   text-align: center;
 }
 
-h3 {
+ h3 {
   color: #023e8a;
   margin-bottom: 15px;
   margin-left: 35%;
   text-align: center;
-}
+} */
 
- .todo-container {
+ /* .todo-container {
   background: #ffffff;
   border-radius: 25px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08); 
@@ -29,12 +30,12 @@ h3 {
   display: flex;
   text-align: center;
   
-}
-
+} 
+ */
 
 
 /* === Form Section === */
-.add-todo {
+/* .add-todo {
   
   background: #f1faff;
   padding: 25px;
@@ -64,10 +65,10 @@ select:focus {
   border-color: #0d6efd;
   box-shadow: 0 0 5px rgba(13, 110, 253, 0.3);
   outline: none;
-}
+} */
 
 /* === Buttons === */
-.btn {
+/* .btn {
   border-radius: 6px;
   font-weight: 500;
   transition: all 0.3s ease;
@@ -76,9 +77,9 @@ select:focus {
 .btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
+} */
 
-.btn-primary {
+/* .btn-primary {
   background-color: #0077b6;
   border-color: #0077b6;
 }
@@ -86,7 +87,7 @@ select:focus {
 .btn-success {
   background-color: #38b000;
   border-color: #38b000;
-}
+}  */
 
 
  /* weatherApp */

@@ -1,39 +1,33 @@
+
+
 import React, { useState, useEffect } from "react";
 import { format, differenceInMinutes, isPast, isFuture } from "date-fns";
-// import { gapi } from "gapi-script";
-import "bootstrap/dist/css/bootstrap.min.css";
-import * as bootstrap from "bootstrap/dist/js/bootstrap.bundle";
-window.bootstrap = bootstrap;
-
-// const SCOPES = "https://www.googleapis.com/auth/calendar.events";
+// import "bootstrap/dist/css/bootstrap.min.css";
+// import * as bootstrap from "bootstrap/dist/js/bootstrap.bundle";
+// window.bootstrap = bootstrap;
 
 function App(props) {
-//   const [todos, setTodos] = useState([]);
-const [todos, setTodos] = useState(() => {
-    // Load from localStorage when the app starts
+  const [todos, setTodos] = useState(() => {
     const saved = localStorage.getItem("todos");
     return saved ? JSON.parse(saved) : [];
   });
   const [text, setText] = useState("");
   const [priority, setPriority] = useState("low");
   const [reminder, setReminder] = useState("");
-  const audio = new Audio("/reminder.mp3"); // Add your audio file in public folder
+  const [editId, setEditId] = useState(null);
+  const audio = new Audio("/reminder.mp3");
 
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
-  
-  //dropdown
-  useEffect(() => {
-  const dropdowns = document.querySelectorAll('[data-bs-toggle="dropdown"]');
-  dropdowns.forEach((dropdown) => {
-    new bootstrap.Dropdown(dropdown);
-  });
-}, []);
+  // useEffect(() => {
+  //   const dropdowns = document.querySelectorAll('[data-bs-toggle="dropdown"]');
+  //   dropdowns.forEach((dropdown) => {
+  //     new bootstrap.Dropdown(dropdown);
+  //   });
+  // }, []);
 
-
-  // Reminder checker
   useEffect(() => {
     const interval = setInterval(() => {
       setTodos((prevTodos) =>
@@ -43,42 +37,56 @@ const [todos, setTodos] = useState(() => {
             !todo.reminded &&
             new Date(todo.reminder) <= new Date()
           ) {
-            // 🔔 Trigger system notification
             if (Notification.permission === "granted") {
               new Notification("⏰ Reminder", {
                 body: todo.text,
               });
             }
-
-            // 🔊 Play sound
             audio.play();
-
-            // 📳 Vibrate if supported
             if (navigator.vibrate) {
               navigator.vibrate([200, 100, 200]);
             }
-
             return { ...todo, reminded: true };
           }
           return todo;
         })
       );
-    }, 30000); // every 30s
+    }, 30000);
 
     return () => clearInterval(interval);
   }, []);
 
   const handleAdd = () => {
     if (!text.trim()) return;
-    const newItem = {
-      id: Date.now(),
-      text: text.trim(),
-      priority,
-      created: new Date().toISOString(),
-      reminder,
-      reminded: false,
-    };
-    setTodos((prev) => [...prev, newItem]);
+
+    if (editId !== null) {
+      setTodos((prev) =>
+        prev.map((item) =>
+          item.id === editId
+            ? {
+                ...item,
+                text: text.trim(),
+                priority,
+                reminder,
+                reminded: false,
+                updated: new Date().toISOString(),
+              }
+            : item
+        )
+      );
+      setEditId(null);
+    } else {
+      const newItem = {
+        id: Date.now(),
+        text: text.trim(),
+        priority,
+        created: new Date().toISOString(),
+        reminder,
+        reminded: false,
+      };
+      setTodos((prev) => [...prev, newItem]);
+    }
+
     setText("");
     setReminder("");
   };
@@ -87,22 +95,17 @@ const [todos, setTodos] = useState(() => {
     setTodos((prev) => prev.filter((item) => item.id !== id));
   };
 
+  const handleEdit = (item) => {
+    setText(item.text);
+    setPriority(item.priority);
+    setReminder(item.reminder || "");
+    setEditId(item.id);
+  };
+
   const priorityOrder = { high: 1, medium: 2, low: 3 };
   const sortedTodos = [...todos].sort(
     (a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]
   );
-
-  // useEffect(() => {
-  //   const popoverTriggerList = document.querySelectorAll(
-  //     '[data-bs-toggle="popover"]'
-  //   );
-  //   const popoverList = [...popoverTriggerList].map(
-  //     (el) => new bootstrap.Popover(el)
-  //   );
-  //   return () => popoverList.forEach((p) => p.dispose());
-  // }, []);
-
-  // 🔥 Helper to highlight reminders
 
   const getReminderClass = (reminder) => {
     if (!reminder) return "";
@@ -114,130 +117,75 @@ const [todos, setTodos] = useState(() => {
   };
 
   return (
-    <div className="todo-container container mt-4" style= {{height: '600px', backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
-       <h4>TO-DO List</h4>
-     
-    <div className="todo" style={{ height: '300px', marginTop: '90px', textAlign: 'center' }}>
-           
-            <div className="card" style={{width: '24rem', backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
-     <div className="card-body" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
-          <div className="input-group mb-2" style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>  
+    <div className="todo-container container mt-4" style={{ height: '600px', borderRadius:'20px', marginTop:'10px', backgroundColor: props.mode === 'dark' ? '#13466e' : 'white', color: props.mode === 'dark' ? 'white' : '#042743' }}>
+    <h3 style={{  textAlign:'center',}}>TO-DO List</h3>
+
+      <div className="todo" style={{ height: '300px', marginTop: '120px', textAlign: 'center', backgroundColor: props.mode === 'dark' ? '#13466e' : 'white', color: props.mode === 'dark' ? 'white' : '#042743'  }}>
+        <div className="card" style={{ width: '34rem', textAlign: 'center', marginLeft: '25%', height: '300px', backgroundColor: props.mode === 'dark' ? '#13466e' : 'white', color: props.mode === 'dark' ? 'white' : '#042743' }}>
+          <div className="card-body" >
+            <div className="input-group mb-4 mt-4">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="New task…"
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+                onKeyDown={(e) => e.key === "Enter" && handleAdd()}
+              />
+              <button className="btn btn-success" onClick={handleAdd}>
+                {editId !== null ? (
+                  <i className="fas fa-save" title="Update"></i>
+                ) : (
+                  <i className="fa fa-plus" aria-hidden="true" title="Add"></i>
+                )}
+              </button>
+            </div>
+
+            <div className="btn-group" style={{ width: '22rem', marginTop: '1rem', backgroundColor: props.mode === 'dark' ? '#13466e' : 'white', color: props.mode === 'dark' ? 'white' : '#042743'  }}>
+              <button type="button" className="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                🎯 Prioritize your task
+              </button>
+              <ul className="dropdown-menu dropdown-menu-end">
+                <li><a className={`dropdown-item ${priority === "high" ? "active text-danger fw-bold" : ""}`} onClick={() => setPriority("high")} href="#">🔴 High</a></li>
+                <li><a className={`dropdown-item ${priority === "medium" ? "active text-warning fw-bold" : ""}`} onClick={() => setPriority("medium")} href="#">🟠 Medium</a></li>
+                <li><a className={`dropdown-item ${priority === "low" ? "active text-success fw-bold" : ""}`} onClick={() => setPriority("low")} href="#">🟢 Low</a></li>
+              </ul>
+            </div>
+
+            <h5 className="mb-2 mt-3"><strong>Add Reminder</strong></h5>
+            <input
+              type="datetime-local"
+              className="form-control mb-2"
+              value={reminder}
+              onChange={(e) => {setReminder(e.target.value);
+              e.target.blur();}}
+            />
             
- 
-          <input
-            type="text"
-            className="form-control"
-            placeholder="New task…"
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && handleAdd()}
-           />
-          <button className="btn btn-success" onClick={handleAdd}>
-            <i className="fa fa-plus" aria-hidden="true"></i>
-          </button>
-             </div> 
-             
-
-
-       
-           <div className="btn-group" style={{width:'22rem', marginTop: '1rem', backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
             
-  <button type="button" className="btn  dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" style= {{width:'22rem', marginTop: '1rem', backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}} >
-
-     
- 🎯 Prioritize your task
-     <ul className="dropdown-menu dropdown-menu-end" > 
- 
-    <li><a className= {`btn ${
-              priority === "high" ? "btn-danger" : "btn-outline-danger"
-            }`}
-            onClick= {() => setPriority("high")}
-            href="/"> </a>High</li>
-    <li><a className= {`btn ${
-              priority === "medium" ? "btn-warning" : "btn-outline-warning"
-            }`}
-            onClick= {() => setPriority("medium")}
-          href="/"></a>Medium</li>
-    <li><a type="button"
-            className= {`btn ${
-              priority === "low" ? "btn-success" : "btn-outline-success"
-            }`}
-            onClick= {() => setPriority("low")}
-          href="/"></a>Low</li>
-          
-      </ul>
-            </button>   
-  </div> 
-
-  
-         
-
-        <h5 className="mb-2 mt-3">
-          <strong>Add Reminder</strong>
-        </h5>
-        <input
-          type="datetime-local"
-          className="form-control mb-2"
-          value={reminder}
-          onChange={(e) => setReminder(e.target.value)}
-        />
-
-        {/* <button
-          type="button"
-          className="btn btn-primary mb-2 me-2"
-          data-bs-toggle="popover"
-          data-bs-title="List"
-          data-bs-content="Hi here is your set of task"
-        >
-          See Tasks
-        </button> */}
-
-
-
-        
-
-       </div> 
+          </div>
         </div>
- </div>
+      </div>
 
       <ul className="list-group">
         {sortedTodos.map((item) => (
           <li
             key={item.id}
-            className={`list-group-item d-flex justify-content-between align-items-start ${getReminderClass(
-              item.reminder
-            )}`}
+            className={`list-group-item d-flex justify-content-between align-items-start ${getReminderClass(item.reminder)}`}
           >
-            <div style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
-              <div style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
-                <strong>{item.text}</strong>
-              </div>
-              <div>
-                <small>Created: {format(new Date(item.created), "PPpp")}</small>
-              </div>
-              <div>
-                <small>
-                  Priority: <strong>{item.priority}</strong>
-                </small>
-              </div>
+            <div>
+              <div><strong>{item.text}</strong></div>
+              <div><small>Created: {format(new Date(item.created), "PPpp")}</small></div>
+              <div><small>Priority: <strong>{item.priority}</strong></small></div>
               {item.reminder && (
-                <div style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
-                  <small>
-                    Reminder: {format(new Date(item.reminder), "PPpp")}
-                  </small>
-                  
-                </div>
+                <div><small>Reminder: {format(new Date(item.reminder), "PPpp")}</small></div>
               )}
-              <button
-                className="btn btn-outline-danger btn-sm"
-                onClick={() => handleDelete(item.id)}
-                title="Delete"
-              >
+              <button className="btn btn-outline-primary btn-sm me-2" onClick={() => handleEdit(item)} title="Edit">
+                <i className="fas fa-edit"></i>
+              </button>
+              <button className="btn btn-outline-danger btn-sm" onClick={() => handleDelete(item.id)} title="Delete">
                 <i className="fas fa-trash"></i>
               </button>
             </div>
-          
-             
           </li>
         ))}
       </ul>
