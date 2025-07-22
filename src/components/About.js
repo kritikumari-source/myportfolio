@@ -91,7 +91,8 @@ import PropTypes from 'prop-types';
         target="_blank"            
         rel="noopener noreferrer"  
         style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743' }}
-      >
+
+>
         Download Resume
       </a>
     </div>

@@ -1,7 +1,6 @@
-// import React from 'react';
+
 import React, { Component } from 'react'
-import PropTypes from 'prop-types';
-// import ToDoList from './ToDoList';
+// import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
 
  function Header(props)
@@ -22,11 +21,12 @@ import { Link } from "react-router-dom";
           <Link className="nav-link active" aria-current="page" to="/">Home</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link " to="/About">About</Link>
+          <Link className="nav-link active " aria-current="page" to="/About">About</Link>
         </li>
 
-           <li className="nav-item dropdown">
-          <Link className="nav-link dropdown-toggle" to="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+           <li className="nav-item dropdown active"  aria-current="page">
+        
+          <Link className="nav-link dropdown-toggle" to="/Projects" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-current="page">
             Projects
           </Link>
           <ul className="dropdown-menu">
@@ -35,8 +35,10 @@ import { Link } from "react-router-dom";
                
                       <li className="dropdown-item"><Link to="/ToDoList">To-Do List</Link> </li> 
             <li><a className="dropdown-divider"></a></li>
-            <li><Link className="dropdown-item" to="/weatherApp">Weather App</Link></li>
+          <li className="dropdown-item"><Link to="/weatherApp">weather App</Link> </li> 
+            {/* <li><Link className="dropdown-item" to="/weatherApp">Weather App</Link></li> */}
            
+           <li className="dropdown-item"><Link to="/QRcode">QRcode</Link> </li> 
           </ul>
          </li> 
         
@@ -64,3 +66,4 @@ import { Link } from "react-router-dom";
     );
 }
  export default Header;
+

@@ -6,6 +6,7 @@ import ToDoList from "./components/ToDoList";
 import WeatherApp from "./components/WeatherApp";
 import About from "./components/About";
 import Headlines from "./components/Headlines";
+import QRcode from "./components/QRcode";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
           <Route path="/ToDoList" element={<ToDoList mode={mode} toggleMode={toggleMode} />} />
           <Route path="/weatherapp" element={<WeatherApp mode={mode} toggleMode={toggleMode}/>} />
           <Route path="/Headlines" element={<Headlines mode={mode} toggleMode={toggleMode} />} />
+          <Route path="/QRcode" element={<QRcode mode={mode} toggleMode={toggleMode} />} />
         </Routes>
       </div>
     </Router>
