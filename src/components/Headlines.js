@@ -7,8 +7,9 @@ function NewsApp(props) {
   const [error, setError] = useState("");
 
     const API_KEY = process.env.REACT_APP_NEWS_API_KEY;
-     const NEWS_URL = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`;
-    // const NEWS_URL = `https://newsapi.org/v2/top-headlines?country=us&category=general&apiKey=${API_KEY}`;
+    console.log(API_KEY);
+     const NEWS_URL = `https://gnews.io/api/v4/top-headlines?category=general&lang=en&apikey=${API_KEY}`;
+    
 
   useEffect(() => {
     axios
