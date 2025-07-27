@@ -42,7 +42,7 @@ function App(props) {
       const res = await axios.get(
         `https://newsapi.org/v2/everything?q=weather&language=en&pageSize=5&sortBy=publishedAt&apiKey=${NEWS_API_KEY}`
       
-      // `https://newsapi.org/v2/top-headlines/sources?category=weatherapiKey=API_KEY`
+      
       );
       setNews(res.data.articles);
     } catch (err) {

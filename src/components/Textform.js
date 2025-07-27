@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function PortfolioFrontPage(props) {
   return (
+    <div>
     <div className="min-h-screen  mt-1"  style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743', height: '500px', borderRadius: '10px'}}>
       {/* Navbar */}
       <header className="flex justify-between items-center px-2 py-3 ">
@@ -23,12 +24,7 @@ export default function PortfolioFrontPage(props) {
         <div className="space-x-4"  style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
           
           <Link className="border border-blue-600 text-blue-600 px-5 py-2 rounded-lg hover:bg-blue-50 transition" to="/About">Contact Me</Link> 
-          {/* <a
-            href="#About"
-            className="border border-blue-600 text-blue-600 px-5 py-2 rounded-lg hover:bg-blue-50 transition"
-          >
-            Contact Me */}
-          {/* </a> */}
+          
         </div>
       </section>
 
@@ -47,6 +43,7 @@ export default function PortfolioFrontPage(props) {
       <footer className="text-center py-6 text-sm text-gray-500"  style={{backgroundColor: props.mode=== 'dark'?'#13466e':'white', color: props.mode=== 'dark'?'white':'#042743'}}>
         &copy; {new Date().getFullYear()} Kriti Kumari. All rights reserved.
       </footer>
+    </div>
     </div>
   );
 }
