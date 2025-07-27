@@ -40,7 +40,7 @@ function App(props) {
   const fetchNews = async () => {
     try {
       const res = await axios.get(
-        `https://newsapi.org/v2/everything?q=weather&language=en&pageSize=5&sortBy=publishedAt&apiKey=${NEWS_API_KEY}`
+        `https://gnews.io/api/v4/search?q=weather&token=${NEWS_API_KEY}`
       
       
       );
