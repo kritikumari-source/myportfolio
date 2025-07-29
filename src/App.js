@@ -28,6 +28,7 @@ function App() {
   return (
     <Router>
       <Header title="myportfolio" mode={mode} toggleMode={toggleMode} />
+      
       <div className="container my-3">
         <Routes>
           <Route path="/" element={<Textform mode={mode} toggleMode={toggleMode} />} />

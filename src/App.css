@@ -199,6 +199,16 @@ About.body {
   color: white !important;
 }
 
+.resume-btn {
+  padding: 15px;
+    /* background-color: rgb(12 56 91); */
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 17px;
+    box-shadow: rgb(223 223 245 / 25%) 0px 30px 60px -12px inset, rgb(56 1 1 / 30%) 0px 18px 36px -18px inset;
+}
+
 
 /* todo css */
 
